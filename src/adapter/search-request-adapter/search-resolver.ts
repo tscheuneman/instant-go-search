@@ -1,10 +1,12 @@
 import {
   SearchContext,
-  MeiliSearch,
   MeiliSearchResponse,
   SearchCacheInterface,
   MeiliSearchParams,
 } from '../../types'
+
+import { GoSearchClient } from '../../go-search';
+
 import { addMissingFacets, extractFacets } from './filters'
 
 /**
@@ -21,8 +23,8 @@ export function SearchResolver(cache: SearchCacheInterface) {
     searchResponse: async function (
       searchContext: SearchContext,
       searchParams: MeiliSearchParams,
-      client: MeiliSearch
-    ): Promise<MeiliSearchResponse<Record<string, any>>> {
+      client: GoSearchClient
+    ): Promise<any> {
       // Create key with relevant informations
       const key = cache.formatKey([
         searchParams,
@@ -38,18 +40,18 @@ export function SearchResolver(cache: SearchCacheInterface) {
       const facetsCache = extractFacets(searchContext, searchParams)
 
       // Make search request
-      const searchResponse = await client
-        .index(searchContext.indexUid)
-        .search(searchContext.query, searchParams)
+      const searchResponse = await client.search(searchContext.query, searchParams)
 
       // Add missing facets back into facetsDistribution
+      /*
       searchResponse.facetsDistribution = addMissingFacets(
         facetsCache,
         searchResponse.facetsDistribution
       )
+      */
 
       // Cache response
-      cache.setEntry<MeiliSearchResponse>(key, searchResponse)
+      cache.setEntry<any>(key, searchResponse)
       return searchResponse
     },
   }

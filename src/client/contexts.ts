@@ -19,6 +19,9 @@ export function createSearchContext(
   const [indexUid, ...sortByArray] = searchRequest.indexName.split(':')
   const { params: instantSearchParams } = searchRequest
 
+  console.log(options);
+  console.log(instantSearchParams);
+
   const searchContext: SearchContext = {
     ...options,
     ...instantSearchParams,
@@ -27,7 +30,7 @@ export function createSearchContext(
     defaultFacetDistribution,
     placeholderSearch: !options.placeholderSearch, // true by default
     paginationTotalHits:
-      options.paginationTotalHits != null ? options.paginationTotalHits : 200,
+      options.paginationTotalHits != null ? options.paginationTotalHits : 20,
     keepZeroFacets: !!options.keepZeroFacets, // false by default
   }
   return searchContext

@@ -1,7 +1,6 @@
-import { MeiliSearch } from 'meilisearch'
 import {
   InstantMeiliSearchOptions,
-  InstantMeiliSearchInstance,
+  GoSearchInstance,
   AlgoliaSearchResponse,
   AlgoliaMultipleQueriesQuery,
   SearchContext,
@@ -14,26 +13,26 @@ import {
 import { createSearchContext } from './contexts'
 import { SearchCache, cacheFirstFacetsDistribution } from '../cache/'
 
+import { GoSearchClient } from '../go-search';
 /**
  * Instanciate SearchClient required by instantsearch.js.
  *
  * @param  {string} hostUrl
  * @param  {string} apiKey
  * @param  {InstantMeiliSearchOptions={}} meiliSearchOptions
- * @returns {InstantMeiliSearchInstance}
+ * @returns {GoSearchInstance}
  */
 export function instantMeiliSearch(
   hostUrl: string,
-  apiKey = '',
   instantMeiliSearchOptions: InstantMeiliSearchOptions = {}
-): InstantMeiliSearchInstance {
+): GoSearchInstance {
   // create search resolver with included cache
   const searchResolver = SearchResolver(SearchCache())
   // paginationTotalHits can be 0 as it is a valid number
   let defaultFacetDistribution: any = {}
 
   return {
-    MeiliSearchClient: new MeiliSearch({ host: hostUrl, apiKey: apiKey }),
+    GoSearchClient: new GoSearchClient(hostUrl),
 
     /**
      * @param  {readonlyAlgoliaMultipleQueriesQuery[]} instantSearchRequests
@@ -50,15 +49,22 @@ export function instantMeiliSearch(
           defaultFacetDistribution
         )
 
+        console.log('searchContext', searchContext);
+
         // Adapt search request to Meilisearch compliant search request
         const adaptedSearchRequest = adaptSearchParams(searchContext)
 
+        console.log('adaptedSearchRequest', adaptedSearchRequest);
+
+
         // Search response from Meilisearch
+
         const searchResponse = await searchResolver.searchResponse(
           searchContext,
           adaptedSearchRequest,
-          this.MeiliSearchClient
+          this.GoSearchClient
         )
+        
 
         // Cache first facets distribution of the instantMeilisearch instance
         // Needed to add in the facetsDistribution the fields that were not returned
