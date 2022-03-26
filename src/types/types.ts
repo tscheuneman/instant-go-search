@@ -4,6 +4,9 @@ import type {
   FacetsDistribution,
 } from 'meilisearch'
 import type { SearchClient } from 'instantsearch.js'
+
+import { GoSearchClient } from '../go-search';
+
 import type { MultipleQueriesQuery as AlgoliaMultipleQueriesQuery } from '@algolia/client-search'
 
 export type { AlgoliaMultipleQueriesQuery }
@@ -76,6 +79,6 @@ export type PaginationContext = {
   page: number
 }
 
-export type InstantMeiliSearchInstance = SearchClient & {
-  MeiliSearchClient: MeiliSearch
+export type GoSearchInstance = SearchClient & {
+  GoSearchClient: GoSearchClient
 }
