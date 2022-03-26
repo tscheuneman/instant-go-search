@@ -8,8 +8,6 @@
     "test:watch": "yarn test --watch",
     "test": "jest --runInBand --selectProjects dom --selectProjects node",
     "test:build": "yarn build && jest --runInBand --selectProjects build",
-    "test:e2e": "yarn local:env:setup && concurrently --kill-others -s first \"yarn local:env:react\" \"cypress run --env playground=local \"",
-    "test:e2e:watch": "yarn local:env:setup && concurrently --kill-others -s first \"yarn local:env:react\" \"cypress open  --env playground=local\"",
     "local:env:setup": "yarn --cwd ./tests/env/react && yarn --cwd ./tests/env/react setup",
     "local:env:react": "yarn --cwd ./tests/env/react && yarn --cwd ./tests/env/react start",
     "postbuild": "yarn typingsheader",
