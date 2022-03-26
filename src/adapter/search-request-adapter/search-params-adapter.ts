@@ -1,9 +1,5 @@
 import type { MeiliSearchParams, SearchContext } from '../../types'
 
-import {
-  adaptGeoPointsRules,
-  createGeoSearchContext,
-} from './geo-rules-adapter'
 import { adaptFilters } from './filter-adapter'
 
 /**
@@ -52,11 +48,6 @@ export function adaptSearchParams(
     meiliSearchParams.attributesToCrop = attributesToRetrieve
   }
 
-  // Attributes To Highlight
-  meiliSearchParams.attributesToHighlight = searchContext?.attributesToHighlight || [
-    '*',
-  ]
-
   const placeholderSearch = searchContext.placeholderSearch
   const query = searchContext.query
   const paginationTotalHits = searchContext.paginationTotalHits
@@ -73,17 +64,6 @@ export function adaptSearchParams(
   // Sort
   if (sort?.length) {
     meiliSearchParams.sort = [sort]
-  }
-
-  const geoSearchContext = createGeoSearchContext(searchContext)
-  const geoRules = adaptGeoPointsRules(geoSearchContext)
-
-  if (geoRules?.filter) {
-    if (meiliSearchParams.filter) {
-      meiliSearchParams.filter.unshift(geoRules.filter)
-    } else {
-      meiliSearchParams.filter = [geoRules.filter]
-    }
   }
 
   return meiliSearchParams
