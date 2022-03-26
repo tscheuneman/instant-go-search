@@ -61,15 +61,11 @@ module.exports = {
         'standard',
         'plugin:prettier/recommended',
         'eslint:recommended',
-        'plugin:cypress/recommended',
       ],
       plugins: ['jest'],
       parserOptions: {
         ecmaVersion: 2020,
-      },
-      rules: {
-        'cypress/no-unnecessary-waiting': 'off',
-      },
+      }
     },
     {
       /*
