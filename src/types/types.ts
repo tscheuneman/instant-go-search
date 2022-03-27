@@ -31,7 +31,7 @@ export type ParsedFilter = {
   value: string
 }
 
-export type InstantMeiliSearchOptions = {
+export type InstantGoSearchOptions = {
   paginationTotalHits?: number
   placeholderSearch?: boolean
   primaryKey?: string
