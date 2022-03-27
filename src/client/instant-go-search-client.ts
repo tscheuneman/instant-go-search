@@ -1,5 +1,5 @@
 import {
-  InstantMeiliSearchOptions,
+  InstantGoSearchOptions,
   GoSearchInstance,
   AlgoliaSearchResponse,
   AlgoliaMultipleQueriesQuery,
@@ -11,7 +11,7 @@ import {
   SearchResolver,
 } from '../adapter'
 import { createSearchContext } from './contexts'
-import { SearchCache, cacheFirstFacetsDistribution } from '../cache/'
+import { SearchCache, cacheFirstFacetsDistribution } from '../cache'
 
 import { GoSearchClient } from '../go-search';
 /**
@@ -19,12 +19,12 @@ import { GoSearchClient } from '../go-search';
  *
  * @param  {string} hostUrl
  * @param  {string} apiKey
- * @param  {InstantMeiliSearchOptions={}} meiliSearchOptions
+ * @param  {InstantGoSearchOptions={}} meiliSearchOptions
  * @returns {GoSearchInstance}
  */
-export function instantMeiliSearch(
+export function instantGoSearch(
   hostUrl: string,
-  instantMeiliSearchOptions: InstantMeiliSearchOptions = {}
+  instantGoSearchOptions: InstantGoSearchOptions = {}
 ): GoSearchInstance {
   // create search resolver with included cache
   const searchResolver = SearchResolver(SearchCache())
@@ -45,7 +45,7 @@ export function instantMeiliSearch(
         const searchRequest = instantSearchRequests[0]
         const searchContext: SearchContext = createSearchContext(
           searchRequest,
-          instantMeiliSearchOptions,
+          instantGoSearchOptions,
           defaultFacetDistribution
         )
 
