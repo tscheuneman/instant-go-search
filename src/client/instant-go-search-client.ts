@@ -49,15 +49,13 @@ export function instantGoSearch(
           defaultFacetDistribution
         )
 
-        console.log('searchContext', searchContext);
-
-        // Adapt search request to Meilisearch compliant search request
+        // Adapt search request to GoSearch search request
         const adaptedSearchRequest = adaptSearchParams(searchContext)
 
         console.log('adaptedSearchRequest', adaptedSearchRequest);
 
 
-        // Search response from Meilisearch
+        // Search response from GoSearch, in Meilisearch format
 
         const searchResponse = await searchResolver.searchResponse(
           searchContext,
