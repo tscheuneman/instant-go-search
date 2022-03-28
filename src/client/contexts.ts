@@ -1,5 +1,5 @@
 import {
-  InstantMeiliSearchOptions,
+  InstantGoSearchOptions,
   AlgoliaMultipleQueriesQuery,
   SearchContext,
   FacetsDistribution,
@@ -12,7 +12,7 @@ import {
  */
 export function createSearchContext(
   searchRequest: AlgoliaMultipleQueriesQuery,
-  options: InstantMeiliSearchOptions,
+  options: InstantGoSearchOptions,
   defaultFacetDistribution: FacetsDistribution
 ): SearchContext {
   // Split index name and possible sorting rules
