@@ -52,8 +52,6 @@ export function instantGoSearch(
         // Adapt search request to GoSearch search request
         const adaptedSearchRequest = adaptSearchParams(searchContext)
 
-        console.log('adaptedSearchRequest', adaptedSearchRequest);
-
 
         // Search response from GoSearch, in Meilisearch format
 

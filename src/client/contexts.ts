@@ -17,10 +17,7 @@ export function createSearchContext(
 ): SearchContext {
   // Split index name and possible sorting rules
   const [indexUid, ...sortByArray] = searchRequest.indexName.split(':')
-  const { params: instantSearchParams } = searchRequest
-
-  console.log(options);
-  console.log(instantSearchParams);
+  const { params: instantSearchParams } = searchRequest;
 
   const searchContext: SearchContext = {
     ...options,

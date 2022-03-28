@@ -1,5 +1,5 @@
 
-const ALLOWED_PARAMS = ['limit'];
+const ALLOWED_PASSTHROUGH_PARAMS = ['limit'];
 
 export class GoSearchClient {
 
@@ -9,8 +9,6 @@ export class GoSearchClient {
     }
 
     async search(query: string|undefined, searchReqParams: any) {
-        console.log('query', query);
-        console.log('pararm2', searchReqParams);
         const searchParams = new URLSearchParams();
         const filterMapping: Record<string, string[]> = {};
 
@@ -18,7 +16,7 @@ export class GoSearchClient {
 
         for(const param in searchReqParams) {
             const paramValue = searchReqParams[param];
-            if(ALLOWED_PARAMS.includes(param)) {
+            if(ALLOWED_PASSTHROUGH_PARAMS.includes(param)) {
                 searchParams.append(param, paramValue);
             }
 
@@ -66,7 +64,6 @@ export class GoSearchClient {
         Object.keys(facets).forEach(key => {
             const facetsInKey = facets[key];
             if(Array.isArray(facetsInKey)) {
-                console.log(facetsInKey);
                 urlSearchParams.append(key, facetsInKey.join(','));
             }
         });
