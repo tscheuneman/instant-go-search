@@ -1,5 +1,5 @@
 {
-  "name": "@tscheuneman/instant-go-search",
+  "name": "instant-go-search",
   "version": "0.6.2",
   "private": false,
   "description": "The search client to use GoSearch with InstantSearch.",
@@ -18,10 +18,10 @@
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
     "types": "yarn tsc"
   },
-  "main": "./dist/instant-meilisearch.umd.js",
-  "module": "./dist/instant-meilisearch.esm.js",
-  "browser": "./dist/instant-meilisearch.umd.js",
-  "cjs": "./dist/instant-meilisearch.cjs.js",
+  "main": "./dist/instant-go-search.umd.js",
+  "module": "./dist/instant-go-search.esm.js",
+  "browser": "./dist/instant-go-search.umd.js",
+  "cjs": "./dist/instant-go-search.cjs.js",
   "source": "src/index.ts",
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
