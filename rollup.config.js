@@ -46,7 +46,7 @@ module.exports = [
       format: 'umd',
       sourcemap: env === 'production', // create sourcemap for error reporting in production mode
       globals: {
-        meilisearch: 'meilisearch',
+        go_search: 'go-search',
       },
     },
     plugins: [
@@ -64,7 +64,7 @@ module.exports = [
   },
   {
     input: INPUT,
-    external: ['meilisearch'],
+    external: ['go_search'],
     output: [
       {
         file: getOutputFileName(

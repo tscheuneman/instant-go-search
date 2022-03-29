@@ -26,9 +26,6 @@
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
   "sideEffects": false,
-  "bugs": {
-    "url": "https://github.com/meilisearch/instant-meilisearch/issues"
-  },
   "files": [
     "dist",
     "src",
@@ -39,11 +36,10 @@
     "instantsearch",
     "client"
   ],
-  "author": "Clementine Urquizar",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meilisearch/instant-meilisearch.git"
+    "url": "https://github.com/tscheuneman/instant-go-search.git"
   },
   "dependencies": {
     "meilisearch": "0.25.0"
